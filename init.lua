@@ -262,6 +262,9 @@ local config = {
     treesitter = { -- overrides `require("treesitter").setup(...)`
       ensure_installed = { "lua" },
     },
+    ["cinnamon"] = {
+      default_delay = 1,
+    },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
       ensure_installed = { "sumneko_lua" },
