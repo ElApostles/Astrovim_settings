@@ -262,89 +262,89 @@ local config = {
       return config -- return final config table to use in require("null-ls").setup(config)
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
-    ensure_installed = { "lua" },
-  },
-  -- use mason-lspconfig to configure LSP installations
-  ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-  ensure_installed = { "sumneko_lua" },
-},
--- use mason-tool-installer to configure DAP/Formatters/Linter installation
-["mason-tool-installer"] = { -- overrides `require("mason-tool-installer").setup(...)`
-ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "lua" },
+    },
+    -- use mason-lspconfig to configure LSP installations
+    ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
+      ensure_installed = { "sumneko_lua" },
+    },
+    -- use mason-tool-installer to configure DAP/Formatters/Linter installation
+    ["mason-tool-installer"] = { -- overrides `require("mason-tool-installer").setup(...)`
+      ensure_installed = { "prettier", "stylua" },
     },
     packer = { -- overrides `require("packer").setup(...)`
-    compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
+      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
+    },
   },
-},
 
--- LuaSnip Options
-luasnip = {
-  -- Add paths for including more VS Code style snippets in luasnip
-  vscode_snippet_paths = {},
-  -- Extend filetypes
-  filetype_extend = {
-    javascript = { "javascriptreact" },
+  -- LuaSnip Options
+  luasnip = {
+    -- Add paths for including more VS Code style snippets in luasnip
+    vscode_snippet_paths = {},
+    -- Extend filetypes
+    filetype_extend = {
+      javascript = { "javascriptreact" },
+    },
   },
-},
 
--- CMP Source Priorities
--- modify here the priorities of default cmp sources
--- higher value == higher priority
--- The value can also be set to a boolean for disabling default sources:
--- false == disabled
--- true == 1000
-cmp = {
-  source_priority = {
-    nvim_lsp = 1000,
-    luasnip = 750,
-    buffer = 500,
-    path = 250,
+  -- CMP Source Priorities
+  -- modify here the priorities of default cmp sources
+  -- higher value == higher priority
+  -- The value can also be set to a boolean for disabling default sources:
+  -- false == disabled
+  -- true == 1000
+  cmp = {
+    source_priority = {
+      nvim_lsp = 1000,
+      luasnip = 750,
+      buffer = 500,
+      path = 250,
+    },
   },
-},
 
--- Modify which-key registration (Use this with mappings table in the above.)
-["which-key"] = {
-  -- Add bindings which show up as group name
-  register_mappings = {
-    -- first key is the mode, n == normal mode
-    n = {
-      -- second key is the prefix, <leader> prefixes
-      ["<leader>"] = {
-        -- third key is the key to bring up next level and its displayed
-        -- group name in which-key top level menu
-        ["b"] = { name = "Buffer" },
+  -- Modify which-key registration (Use this with mappings table in the above.)
+  ["which-key"] = {
+    -- Add bindings which show up as group name
+    register_mappings = {
+      -- first key is the mode, n == normal mode
+      n = {
+        -- second key is the prefix, <leader> prefixes
+        ["<leader>"] = {
+          -- third key is the key to bring up next level and its displayed
+          -- group name in which-key top level menu
+          ["b"] = { name = "Buffer" },
+        },
       },
     },
   },
-},
 
--- This function is run last and is a good place to configuring
--- augroups/autocommands and custom filetypes also this just pure lua so
--- anything that doesn't fit in the normal config locations above can go here
-polish = function()
-  -- Set key binding
-  -- Set autocommands
-  vim.api.nvim_create_augroup("packer_conf", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    desc = "Sync packer after modifying plugins.lua",
-    group = "packer_conf",
-    pattern = "plugins.lua",
-    command = "source <afile> | PackerSync",
-  })
+  -- This function is run last and is a good place to configuring
+  -- augroups/autocommands and custom filetypes also this just pure lua so
+  -- anything that doesn't fit in the normal config locations above can go here
+  polish = function()
+    -- Set key binding
+    -- Set autocommands
+    vim.api.nvim_create_augroup("packer_conf", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      desc = "Sync packer after modifying plugins.lua",
+      group = "packer_conf",
+      pattern = "plugins.lua",
+      command = "source <afile> | PackerSync",
+    })
 
-  -- Set up custom filetypes
-  -- vim.filetype.add {
-  --   extension = {
-  --     foo = "fooscript",
-  --   },
-  --   filename = {
-  --     ["Foofile"] = "fooscript",
-  --   },
-  --   pattern = {
-  --     ["~/%.config/foo/.*"] = "fooscript",
-  --   },
-  -- }
-end,
-      }
+    -- Set up custom filetypes
+    -- vim.filetype.add {
+    --   extension = {
+    --     foo = "fooscript",
+    --   },
+    --   filename = {
+    --     ["Foofile"] = "fooscript",
+    --   },
+    --   pattern = {
+    --     ["~/%.config/foo/.*"] = "fooscript",
+    --   },
+    -- }
+  end,
+}
 
-      return config
+return config
