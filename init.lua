@@ -225,6 +225,10 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      ["ur4ltz/surround.nvim"] = {
+        event = "BufRead",
+        config = function() require("surround").setup { mappings_style = "surround", map_insert_mode = false } end,
+      },
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
