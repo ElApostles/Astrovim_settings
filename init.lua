@@ -42,6 +42,7 @@ local config = {
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
     opt = {
+      clipboard = "",
       backup = false, -- creates a backup file
       cmdheight = 2, -- more space in the neovim command line for displaying messages
       conceallevel = 0, -- so that `` is visible in markdown files
@@ -73,8 +74,9 @@ local config = {
       -- scrolloff = 8,                           -- is one of my fav
       sidescrolloff = 8,
       guifont = "monospace:h17", -- the font used in graphical neovim applications
-      foldmethod = "marker",
-      foldmarker = { "{{{", "}}}" },
+      foldenable = false,
+      foldexpr = "nvim_treesitter#foldexpr()", -- set Treesitter based folding
+      foldmethod = "expr",
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -196,12 +198,22 @@ local config = {
     n = {
       -- second key is the lefthand side of the map
       -- mappings seen under group name "Buffer"
+      ["<m-j>"] = { "<cmd>STSSwapDownNormal<cr>", desc = "Swap next tree-sitter object" },
+      ["<m-l>"] = { "<cmd>STSSwapDownNormal<cr>", desc = "Swap next tree-sitter object" },
+      ["<m-u>"] = { "<cmd>STSSwapUpNormal<cr>", desc = "Swap previous tree-sitter object" },
+      ["<m-h>"] = { "<cmd>STSSwapUpNormal<cr>", desc = "Swap previous tree-sitter object" },
       ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    },
+    x = {
+      ["J"] = { "<cmd>STSSelectNextSiblingNode<cr>", desc = "Surf next tree-sitter object" },
+      ["K"] = { "<cmd>STSSelectPrevSiblingNode<cr>", desc = "Surf previous tree-sitter object" },
+      ["H"] = { "<cmd>STSSelectParentNode<cr>", desc = "Surf parent tree-sitter object" },
+      ["L"] = { "<cmd>STSSelectChildNode<cr>", desc = "Surf child tree-sitter object" },
     },
     t = {
       -- setting a mapping to false will disable it
