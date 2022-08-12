@@ -278,6 +278,7 @@ local config = {
     treesitter = { -- overrides `require("treesitter").setup(...)`
       ensure_installed = { "lua" },
     },
+    ["indent_blankline"] = require "user.plugin.indentline",
     ["cinnamon"] = {
       default_delay = 1,
     },
