@@ -154,7 +154,8 @@ local config = {
     -- easily add or disable built in mappings added during LSP attaching
     mappings = {
       n = {
-        -- ["<leader>lf"] = false -- disable formatting keymap
+        ["K"] = { "K<C-w>L", desc = "Open manual in right window" },
+        ["gi"] = { function() vim.lsp.buf.hover() end, desc = "Hover symbol details" },
       },
     },
     -- add to the global LSP on_attach function
@@ -310,6 +311,8 @@ local config = {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    -- undo some keybinding.
+
     -- Set key binding
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })

@@ -1,13 +1,3 @@
-local function vim_opt_toggle(user_opt, first, second)
-  if first == nil then first = true end
-  if second == nil then second = false end
-  if vim.o[user_opt] == first then
-    vim.opt[user_opt] = second
-  else
-    vim.opt[user_opt] = first
-  end
-end
-
 return {
   n = {
     -- second key is the lefthand side of the map
