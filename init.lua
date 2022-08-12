@@ -57,6 +57,7 @@ local config = {
       cindent = true,
       autoindent = true, -- Uses indentation of previous line
       splitbelow = true, -- force all horizontal splits to go below current window
+      termguicolors = true,
       splitright = true, -- force all vertical splits to go to the right of current window
       swapfile = false, -- creates a swapfile
       timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
@@ -188,39 +189,6 @@ local config = {
     },
   },
 
-  -- Mapping data with "desc" stored directly by vim.keymap.set().
-  --
-  -- Please use this mappings table to set keyboard mapping since this is the
-  -- lower level configuration and more robust one. (which-key will
-  -- automatically pick-up stored data by this setting.)
-  mappings = {
-    -- first key is the mode
-    n = {
-      -- second key is the lefthand side of the map
-      -- mappings seen under group name "Buffer"
-      ["<m-j>"] = { "<cmd>STSSwapDownNormal<cr>", desc = "Swap next tree-sitter object" },
-      ["<m-l>"] = { "<cmd>STSSwapDownNormal<cr>", desc = "Swap next tree-sitter object" },
-      ["<m-u>"] = { "<cmd>STSSwapUpNormal<cr>", desc = "Swap previous tree-sitter object" },
-      ["<m-h>"] = { "<cmd>STSSwapUpNormal<cr>", desc = "Swap previous tree-sitter object" },
-      ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-      ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
-      ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
-      ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      -- quick save
-      -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    },
-    x = {
-      ["J"] = { "<cmd>STSSelectNextSiblingNode<cr>", desc = "Surf next tree-sitter object" },
-      ["K"] = { "<cmd>STSSelectPrevSiblingNode<cr>", desc = "Surf previous tree-sitter object" },
-      ["H"] = { "<cmd>STSSelectParentNode<cr>", desc = "Surf parent tree-sitter object" },
-      ["L"] = { "<cmd>STSSelectChildNode<cr>", desc = "Surf child tree-sitter object" },
-    },
-    t = {
-      -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
-    },
-  },
-
   -- Configure plugins
   plugins = {
     init = {
@@ -241,7 +209,8 @@ local config = {
         event = "BufRead",
         config = function() require("surround").setup { mappings_style = "surround", map_insert_mode = false } end,
       },
-
+      -- 42header
+      { "42Paris/42header" },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
@@ -279,6 +248,7 @@ local config = {
       ensure_installed = { "lua" },
     },
     ["indent_blankline"] = require "user.plugin.indentline",
+    ["cmp"] = require "user.plugin.cmp",
     ["cinnamon"] = {
       default_delay = 1,
     },
