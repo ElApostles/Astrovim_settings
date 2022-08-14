@@ -5,6 +5,8 @@ return {
       ["<cr>"] = { '<esc>/<++><cr>"_c4l', "Next Template" },
       ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
       ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
+      ["q"] = { ":qa<cr>", "Quit All" },
+      ["w"] = { ":wa<cr>", "Save All" },
 
       n = {
         name = "Annotate",
