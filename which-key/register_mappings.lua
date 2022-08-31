@@ -6,7 +6,7 @@ return {
       ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
       ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
       ["q"] = { ":qa<cr>", "Quit All" },
-      ["w"] = { ":wa<cr>", "Save All" },
+      ["w"] = { "<cmd>SessionManager! save_current_session<cr>", "Save this session" },
 
       n = {
         name = "Annotate",
