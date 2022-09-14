@@ -1,5 +1,6 @@
 return {
     {"42Paris/42header"},
+    ["folke/tokyonight.nvim"] = require "user.plugins.tokyonight",
     ["declancm/cinnamon.nvim"] = require "user.plugins.cinnamon",
     ["kylechui/nvim-surround"] = require "user.plugins.nvim-surround",
     ["echasnovski/mini.nvim"] = require "user.plugins.mini",
