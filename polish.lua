@@ -1,7 +1,7 @@
 return function()
     vim.api.nvim_create_autocmd(
-    { "BufRead", "BufNewFile" },
-    { pattern = { "*.hpp", "*.h", }, command = "set tabstop=4" }
+    { "BufRead", "BufNewFile", "BufEnter" },
+    { pattern = { "*.*pp", "*.h", }, command = "set tabstop=4" }
     )
 
     -- FileType
