@@ -1,13 +1,8 @@
 return function()
-
-    vim.api.nvim_create_augroup("packer_conf", { clear = true })
-    vim.api.nvim_create_autocmd("BufWritePost", {
-        desc = "Sync packer after modifying plugins.lua",
-        group = "packer_conf",
-        pattern = "plugins/init.lua",
-        command = "source <afile> | PackerSync",
-    })
-
+    vim.api.nvim_create_autocmd(
+    { "BufRead", "BufNewFile" },
+    { pattern = { "*.hpp", "*.h", }, command = "set tabstop=4" }
+    )
 
     -- FileType
     vim.filetype.add {
