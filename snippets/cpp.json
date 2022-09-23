@@ -1,6 +1,6 @@
 {
   "setup": {
-    "prefix": ["class basic"],
+    "prefix": ["class"],
     "body": [
       "class ${1:MyClass}",
       "{",
@@ -10,15 +10,7 @@
       "public:",
       "\t$1();",
       "\t~$1();",
-      "};",
-      "",
-      "$1::$1()",
-      "{",
-      "}",
-      "",
-      "$1::~$1()",
-      "{",
-      "}"
+      "};"
     ],
     "description": "Code snippet for basic class"
   }

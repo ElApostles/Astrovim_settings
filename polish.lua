@@ -1,30 +1,21 @@
 return function()
-  if vim.fn.exists "$TMUX" == 1 then
-    local has_tmux, _ = pcall(require, "tmux")
-    if has_tmux then
-      require("tmux").setup {
-        copy_sync = {
-          enable = false,
-        },
-        navigation = {
-          cycle_navigation = true,
-          enable_default_keybindings = true,
-        },
-        resize = {
-          enable_default_keybindings = true,
-        },
-      }
-    end
-  end
 
-  -- FileType
-  vim.filetype.add {
-    extension = {
-      tpp = "cpp"
-    },
-    filename = {
-      ["CmakeLists.txt"] = "cmake",
-      [".clang-format"] = "yaml",
-    },
-  }
+    vim.api.nvim_create_augroup("packer_conf", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePost", {
+        desc = "Sync packer after modifying plugins.lua",
+        group = "packer_conf",
+        pattern = "plugins/init.lua",
+        command = "source <afile> | PackerSync",
+    })
+
+
+    -- FileType
+    vim.filetype.add {
+        extension = {
+        },
+        filename = {
+            ["CmakeLists.txt"] = "cmake",
+            [".clang-format"] = "yaml",
+        },
+    }
 end
