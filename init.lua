@@ -1,6 +1,7 @@
 return {
   updater = {
     channel = "nightly",
+    branch = "nightly"
   },
   lsp = {
     ["server-settings"] = {
