@@ -47,7 +47,6 @@ return {
         s = { "<cmd>STSSelectMasterNode<cr>", "Surf" },
         S = { "<cmd>STSSelectCurrentNode<cr>", "Surf Node" },
       },
-
-    }
-  }
+    },
+  },
 }
