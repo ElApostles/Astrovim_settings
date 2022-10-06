@@ -1,14 +1,16 @@
 return {
   updater = {
     channel = "nightly",
-    branch = "nightly"
+    branch = "nightly",
   },
   lsp = {
     formatting = {
       disabled = { -- disable formatting capabilities for the listed clients
-      "clangd",
+        "clangd",
+        "null-ls",
+        "yaml-language-server"
+      },
     },
-  },
     ["server-settings"] = {
       clangd = {
         capabilities = { offsetEncoding = "utf-8" },
