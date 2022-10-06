@@ -4,6 +4,11 @@ return {
     branch = "nightly"
   },
   lsp = {
+    formatting = {
+      disabled = { -- disable formatting capabilities for the listed clients
+      "clangd",
+    },
+  },
     ["server-settings"] = {
       clangd = {
         capabilities = { offsetEncoding = "utf-8" },
