@@ -5,11 +5,7 @@ return {
   },
   lsp = {
     formatting = {
-      disabled = { -- disable formatting capabilities for the listed clients
-        "clangd",
-        "null-ls",
-        "yaml-language-server"
-      },
+      format_on_save = false,
     },
     ["server-settings"] = {
       clangd = {
