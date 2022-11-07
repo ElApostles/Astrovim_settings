@@ -1,7 +1,6 @@
 # Astrovim_setting Guide
 
-
-Install neovim
+You must install neovim to use this settings. 
 
 Make a backup of your current nvim folder
 ```
