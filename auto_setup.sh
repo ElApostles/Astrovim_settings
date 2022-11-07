@@ -5,7 +5,5 @@ eval "$(homebrew/bin/brew shellenv)"
 brew update --force --quiet
 chmod -R go-w "$(brew --prefix)/share/zsh"
 brew install lazygit
-brew install node@16
 brew install ripgrep
 brew install fzf
-brew install cmake
